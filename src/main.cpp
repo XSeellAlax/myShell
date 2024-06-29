@@ -3,7 +3,7 @@
 int main() {
     std::string line;
     std::cout << "\033[1;33m-------------------------------------------------\n";
-    std::cout << "\033[1;33m|         This project is by 王鹏 王修悟 :)         |\n";
+    std::cout << "\033[1;33m|         This project is by 王鹏 王修悟:         |\n";
     std::cout << "\033[1;33m-------------------------------------------------\n";
     while (true) {
         std::cout << "myshell> ";

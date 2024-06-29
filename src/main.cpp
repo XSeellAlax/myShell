@@ -6,7 +6,7 @@ int main() {
     std::cout << "\033[1;33m|         This project is by 王鹏 王修悟 :)         |\n";
     std::cout << "\033[1;33m-------------------------------------------------\n";
     while (true) {
-        std::cout << "\033myshell> ";
+        std::cout << "myshell> ";
 
         if (!std::getline(std::cin, line) || line == "exit") {
         

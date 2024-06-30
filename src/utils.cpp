@@ -13,47 +13,6 @@ std::vector<std::string> split(const std::string &s, char delim) {
     return result;
 }
 
-// 执行单个命令
-void executeCommand(const std::vector<std::string>& args, const std::string& infile, const std::string& outfile) {
-    std::vector<char*> argv;
-    for (const auto& arg : args) {
-        argv.push_back(const_cast<char*>(arg.c_str()));
-    }
-    argv.push_back(nullptr);
-
-    pid_t pid = fork();
-    if (pid == 0) {
-        // 子进程，设置I/O重定向
-        if (!infile.empty()) {
-            int in_fd = open(infile.c_str(), O_RDONLY);
-            if (in_fd == -1) {
-                std::cerr << "Error opening input file." << std::endl;
-                exit(EXIT_FAILURE);
-            }
-            dup2(in_fd, STDIN_FILENO);
-            close(in_fd);
-        }
-        if (!outfile.empty()) {
-            int out_fd = open(outfile.c_str(), O_WRONLY | O_CREAT | O_TRUNC, 0666);
-            if (out_fd == -1) {
-                std::cerr << "Error: connot opening output file." << std::endl;
-                exit(EXIT_FAILURE);
-            }
-            dup2(out_fd, STDOUT_FILENO);
-            close(out_fd);
-        }
-
-        execvp(argv[0], argv.data());
-        std::cerr << "Command execution failed: " << strerror(errno) << std::endl;
-        exit(EXIT_FAILURE);
-    } else if (pid > 0) {
-        // 父进程，等待子进程结束
-        waitpid(pid, nullptr, 0);
-    } else {
-        std::cerr << "Failed to fork." << std::endl;
-    }
-}
-
 // 解析命令行
 void parseAndExecute(std::string commandLine) {
     std::istringstream iss(commandLine);

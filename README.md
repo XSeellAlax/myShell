@@ -3,7 +3,24 @@
 ## 项目简介
 
  linux 下的 Shell程序
-![](./image/demo1.png)
+<!-- ![](./image/demo1.png) -->
+**快速上手**:
+```
+git clone https://github.com/XSeellAlax/myShell.git
+
+mkdir ./build & cd ./build
+
+cmake ../src/
+
+make & ./myShell
+```
+**程序目录**
+```
+./src: 源代码
+./image: 图片资源
+./项目演示视频: 演示视频
+./项目演示文档: 演示文档
+```
 ## 成员
 |成员|学号|
 |---|---|
@@ -24,24 +41,11 @@
 
 ![](./image/demo4.png)
 ![](./image/demo5.png)
-## 程序目录
 
-./src: 源代码
-./image: 图片资源
-./项目演示视频: 演示视频
-./项目演示文档: 演示文档
 
-## 使用方法
+<!-- ## 使用方法 -->
 
-```
-git clone https://github.com/XSeellAlax/myShell.git
 
-mkdir ./build & cd ./build
-
-cmake ../src/
-
-make & ./myShell
-```
 
 
 
